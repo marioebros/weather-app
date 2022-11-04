@@ -8,7 +8,7 @@
     <title>Weather Tracker</title>
   </head>
   <body>
-    <header>
+    <!------ <header>
       <main>
         <footer>
           <div>
@@ -16,7 +16,17 @@
           </div>
         </footer>
       </main>
-    </header>
+    </header> ------>
+    <img src="#" />
+    <script>
+      const img = document.querySelector("img");
+      fetch(
+        "https://api.giphy.com/v1/gifs/translate?api_key=YOUR_KEY_HERE&s=cats",
+        { mode: "cors" }
+      ).then(function (response) {
+        console.log(response.json());
+      });
+    </script>
   </body>
   <script src="main.js"></script>
 </html>
