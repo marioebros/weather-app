@@ -1,4 +1,12 @@
 import _ from "lodash";
+import { dailyUpdate } from "./scripts/dailyUpdate";
+import { header } from "./scripts/header";
+import { current } from "./scripts/current";
+import "./styles.css";
+
+header.onPageLoad();
+current.onPageLoad();
+dailyUpdate.onPageLoad();
 
 function component() {
   const element = document.createElement("div");
