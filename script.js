@@ -66,4 +66,21 @@ function displayWeather(currentWeather) {
 
     // Call function to clear any DOM elements from previous searches
     clearDOM();
+
+    // Create DOM elements
+    const city = document.createElement("p");
+    city.textContent = currentWeather.place;
+    displayDiv.appendChild(city);
+    const status = document.createElement("p");
+    status.textContent = currentWeather.mainWeather;
+    displayDiv.appendChild(status);
+    const cityTemp = document.createElement("p");
+    cityTemp.textContent = currentWeather.temp + " Degrees";
+    displayDiv.appendChild(cityTemp);
+    const cityHumidity = document.createElement("p");
+    cityHumidity.textContent = currentWeather.humidity + " Humidity";
+    displayDiv.appendChild(cityHumidity);
+    const cityWind = document.createElement("p");
+    cityWind.textContent = currentWeather.wind + " Wind";
+    displayDiv.appendChild(cityWind);
 }
