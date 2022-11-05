@@ -31,5 +31,39 @@ async function fetchCurrentWeather() {
         const response = await fetch("https://api.openweathermap.org/data/2.5/weather?q=" + searchCity + "," + searchState + "," + searchCountry + "&units=imperial&APPID=9857d669989b2a7df63d0e3be6b22bb8", { mode: "cors"});
         const currentData = await response.json();
         console.log("Fetching current weather data from API...", currentData);
-    }
+
+        // Construct Object for weather app from API JSON data
+        const currentWeather: currentData.weather[0].main,
+        place: currentData.name + ", " + searchState.toUpperCase() + " " + currentData.sys.country,
+        temp: Math.round(currentData.main.temp),
+        humidity: currentData.main.humidity + "%",
+        wind: Math.round(currentData.wind.speed) + " MPH"
+    };
+
+    console.log(currentWeather);
+
+    displayWeather(currentWeather);
+
+    getGiphy(currentWeather.mainWeather);
+
+} catch (err) {
+    console.log("Something went wrong while fetching the current weather data...", err);
+    alert("Something went wrong while fetching the current weather data...");
+}
+
+function clearSearch() {
+    document.getElementById("search-city").value = "";
+    document.getElementById("search-state").value = "";
+    document.getElementById("search-country").value = "";
+    const img = document.querySelector("img");
+    img.style.display = "none";
+    clearDOM();
+}
+
+// Function to display reset JSON to DOM
+function displayWeather(currentWeather) {
+    const displayDiv = document.querySelector(".display-div");
+
+    // Call function to clear any DOM elements from previous searches
+    clearDOM();
 }
