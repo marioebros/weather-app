@@ -84,3 +84,30 @@ function displayWeather(currentWeather) {
     cityWind.textContent = currentWeather.wind + " Wind";
     displayDiv.appendChild(cityWind);
 }
+
+async function getGiphy(mainWeather) {
+    try {
+        const img = document.querySelector("img");
+        let keyWord = mainWeather;
+        if (keyWord == "Clear") {
+            keyWord = "Clear Sky";
+        }
+        const response = await fetch("https://api.giphy.com/v1/gifs/translate?api_key=W9virN3WbbA6c0IxIVJfdtEFJVuXRCmT&weirdness=0&s=" + keyWord, { mode: "cors" });
+        const giphyResponse = await response.json();
+        console.log(giphyResponse);
+        img.style.display = "";
+        img.src = giphyResponse.data.images.original.url;
+    } catch (err) {
+        console.log("An error occurred while trying to fetch the giphy...", err);
+    }
+}
+
+function clearDOM() {
+    // Clear DOM from previous searches 
+    const nodeList = document.querySelectorAll("p");
+    if (nodeList !== null) {
+        for (let i = 0; i < nodeList.length; i++) {
+            nodeList[i].remove();
+        }
+    }
+}
